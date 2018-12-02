@@ -22,13 +22,231 @@ ENTITY hw_image_generator IS
 END hw_image_generator;
 
 ARCHITECTURE behavior OF hw_image_generator IS
-BEGIN
-  PROCESS(disp_ena, row, column)
-  BEGIN
 
-    IF(disp_ena = '1') THEN        --display time
+signal R0 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G0 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B0 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R1 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G1 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B1 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R2 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G2 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B2 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R3 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G3 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B3 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R4 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G4 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B4 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R5 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G5 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B5 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R6 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G6 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B6 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R7 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G7 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B7 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R8 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G8 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B8 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R9 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G9 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B9 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R10 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G10 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B10 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R11 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G11 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B11 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R12 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G12 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B12 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R13 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G13 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B13 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R14 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G14 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B14 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+signal R15 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal G15 : STD_LOGIC_Vector(7 DOWNTO 0);
+signal B15 : STD_LOGIC_Vector(7 DOWNTO 0);
+
+
+BEGIN
+
+
+  Draw : PROCESS(disp_ena, row, column)
+	BEGIN
+			
+		IF(disp_ena = '1' ) THEN
+		
+	
+		
+		--box0
+					
+				IF((row > 0 AND row < 475) AND (column > 0  AND column < 265)) THEN
+			
+	
+					red <= R0;
+					green	<= G0;
+					blue <= B0;
+					
+		--box1
+					
+				elsIF((row > 485 AND row < 955) AND (column > 0  AND column < 265)) THEN
+			
+	
+					red <= R1;
+					green	<= G1;
+					blue <= B1;
+					
+		--box2
+					
+				elsIF((row > 965 AND row < 1435) AND (column > 0  AND column < 265)) THEN
+			
+	
+					red <= R2;
+					green	<= G2;
+					blue <= B2;
+					
+		--box3
+					
+				elsIF((row > 1445 AND row < 1920) AND (column > 0  AND column < 265)) THEN
+			
+	
+					red <= R3;
+					green	<= G3;
+					blue <= B3;
+					
+					
+		--box4
+					
+				elsIF((row > 0 AND row < 475) AND (column > 275  AND column < 535)) THEN
+			
+	
+					red <= R4;
+					green	<= G4;
+					blue <= B4;
+					
+		--box5
+					
+				elsIF((row > 485 AND row < 955) AND (column > 275  AND column < 535)) THEN
+			
+	
+					red <= R5;
+					green	<= G5;
+					blue <= B5;
+					
+		--box6
+					
+				elsIF((row > 965 AND row < 1435) AND (column > 275  AND column < 535)) THEN
+			
+	
+					red <= R6;
+					green	<= G6;
+					blue <= B6;
+					
+		--box7
+					
+				elsIF((row > 1445 AND row < 1920) AND (column > 275  AND column < 535)) THEN
+			
+	
+					red <= R7;
+					green	<= G7;
+					blue <= B7;
+					
+		--box8
+					
+				elsIF((row > 0 AND row < 475) AND (column > 545  AND column < 805)) THEN
+			
+	
+					red <= R8;
+					green	<= G8;
+					blue <= B8;
+					
+		--box9
+					
+				elsIF((row > 485 AND row < 955) AND (column > 545  AND column < 805)) THEN
+			
+	
+					red <= R9;
+					green	<= G9;
+					blue <= B9;
+					
+		--box10
+					
+				elsIF((row > 965 AND row < 1435) AND (column > 545  AND column < 805)) THEN
+			
+	
+					red <= R10;
+					green	<= G10;
+					blue <= B10;
+					
+		--box11
+					
+				elsIF((row > 1445 AND row < 1920) AND (column > 545  AND column < 805)) THEN
+			
+		
+					red <= R11;
+					green	<= G11;
+					blue <= B11;
+					
+					
+		--box12
+					
+				elsIF((row > 0 AND row < 475) AND (column > 815  AND column < 1080)) THEN
+			
+	
+					red <= R12;
+					green	<= G12;
+					blue <= B12;
+					
+		--box13
+					
+				elsIF((row > 485 AND row < 955) AND (column > 815  AND column < 1080)) THEN
+			
+	
+					red <= R13;
+					green	<= G13;
+					blue <= B13;
+					
+		--box14
+					
+				elsIF((row > 965 AND row < 1435) AND (column > 815  AND column < 1080)) THEN
+			
+	
+					red <= R14;
+					green	<= G14;
+					blue <= B14;
+					
+		--box15
+					
+				elsIF((row > 1445 AND row < 1920) AND (column > 815  AND column < 1080)) THEN
+			
+	
+					red <= R15;
+					green	<= G15;
+					blue <= B15;
+					
+						
 					--Grid	
-				IF((row > 475 AND row < 485) OR (row > 955 AND row < 965) OR (row > 1435 AND row < 1445)  ) THEN
+				elsIF((row > 475 AND row < 485) OR (row > 955 AND row < 965) OR (row > 1435 AND row < 1445)  ) THEN
 					red <= (OTHERS => '0');
 					green	<= (OTHERS => '0');
 					blue <= (OTHERS => '0');
@@ -37,19 +255,23 @@ BEGIN
 					red <= (OTHERS => '0');
 					green	<= (OTHERS => '0');
 					blue <= (OTHERS => '0');
-          
-        else
-		      red <= (OTHERS => '1');
+				
+			
+				else
+			
+	
+					red <= (OTHERS => '1');
 					green	<= (OTHERS => '1');
 					blue <= (OTHERS => '1');
-          
-        end if;
-        
-    ELSE                           --blanking time
-      red <= (OTHERS => '0');
-      green <= (OTHERS => '0');
-      blue <= (OTHERS => '0');
-    END IF;
-  
-  END PROCESS;
+					
+					end if;
+	
+		ELSE								--blanking time
+			red <= (OTHERS => '0');
+			green <= (OTHERS => '0');
+			blue <= (OTHERS => '0');
+		END IF;
+		
+
+	END PROCESS Draw;
 END behavior;
