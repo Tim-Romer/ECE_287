@@ -1,6 +1,4 @@
 
-
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 use IEEE.STD_LOGIC_ARITH.all;
@@ -32,6 +30,11 @@ TYPE Level IS (BLUES, REDS, BLACK,  GREENS, PINK, TEAL, YELLOW, PURPLE, LIGHTBLU
 SIGNAL x3  : level := blues;
 signal X1, X0,  x2, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15 : Level := white;
 
+--SIGNAL X0T, X1T, X2T,X3T, X4T, X5T, X6T, X7T, X8T, X9T, X10T, X11T, X12T, X13T, X14T, X15T : Level;
+
+
+SIGNAL CURLEVEL : STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL EQUAL	  : BOOLEAN;		
 
 
 signal R0 : STD_LOGIC_Vector(7 DOWNTO 0);
@@ -1423,14 +1426,22 @@ VCOUNT : Process BEGIN
 	End if;
 END PROCESS;
 
+LCOUNT : PROCESS BEGIN
+
+WAIT UNTIL (EQUAL);
+CURLEVEL <= CURLEVEL + 1;
 
 
-LeftMove : Process(lT, dT) BEGIN
+END PROCESS;
+
+
+
+Move : Process(lT, dT) BEGIN
 
 
 
 --r1	
-	if ( LT = "000") AND (DT = "000") then
+	if ( LT = "000") AND (DT = "000") AND (CURLEVEL = "0000") then
   
 	X3 <= BLUES;
 	X2 <= WHITE;
@@ -1452,9 +1463,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 		
-	elsIF ( LT = "001") AND (DT = "000") then
+	elsIF ( LT = "001") AND (DT = "000") AND (CURLEVEL = "0000") then
 	
 	X2 <= BLUES;
 	X3 <= WHITE;
@@ -1476,9 +1489,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 	
-	elsIF ( LT = "010") AND (DT = "000") then
+	elsIF ( LT = "010") AND (DT = "000") AND (CURLEVEL = "0000") then
 	
 	X1 <= BLUES;
 	X2 <= WHITE;
@@ -1500,9 +1515,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 	
-	elsIF ( LT = "011") AND (DT = "000") then
+	elsIF ( LT = "011") AND (DT = "000") AND (CURLEVEL = "0000") then
 	
 	X0 <= BLUES;
 	X3 <= WHITE;
@@ -1524,11 +1541,13 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 	
 --R2
 	
-	ELSif ( LT = "000") AND (DT = "001") then
+	ELSif ( LT = "000") AND (DT = "001") AND (CURLEVEL = "0000") then
   
 	X7 <= BLUES;
 	X4 <= WHITE;
@@ -1550,8 +1569,10 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 		
-	elsIF ( LT = "001") AND (DT = "001") then
+	elsIF ( LT = "001") AND (DT = "001") AND (CURLEVEL = "0000") then
 	
 	X6 <= BLUES;
 	X4 <= WHITE;
@@ -1572,9 +1593,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "010") AND (DT = "001") then
+	elsIF ( LT = "010") AND (DT = "001") AND (CURLEVEL = "0000") then
 	
 	X5 <= BLUES;
 	X4 <= WHITE;
@@ -1595,9 +1618,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "011") AND (DT = "001") then
+	elsIF ( LT = "011") AND (DT = "001") AND (CURLEVEL = "0000") then
 	
 	X4 <= BLUES;
 	X6 <= WHITE;
@@ -1619,9 +1644,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 --R3
 	
-	ELSif ( LT = "000") AND (DT = "010") then
+	ELSif ( LT = "000") AND (DT = "010") AND (CURLEVEL = "0000") then
 
 	X7 <= WHITE;
 	X4 <= WHITE;
@@ -1643,8 +1670,10 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 		
-	elsIF ( LT = "001") AND (DT = "010") then
+	elsIF ( LT = "001") AND (DT = "010") AND (CURLEVEL = "0000") then
 	
 	X6 <= WHITE;
 	X4 <= WHITE;
@@ -1665,9 +1694,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "010") AND (DT = "010") then
+	elsIF ( LT = "010") AND (DT = "010") AND (CURLEVEL = "0000") then
 	
 	X5 <= WHITE;
 	X4 <= WHITE;
@@ -1688,9 +1719,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "011") AND (DT = "010") then
+	elsIF ( LT = "011") AND (DT = "010") AND (CURLEVEL = "0000") then
 	
 	X4 <= WHITE;
 	X6 <= WHITE;
@@ -1712,9 +1745,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 --R4
 	
-	ELSif ( LT = "000") AND (DT = "011") then
+	ELSif ( LT = "000") AND (DT = "011") AND (CURLEVEL = "0000") then
 
 	X7 <= WHITE;
 	X4 <= WHITE;
@@ -1736,8 +1771,10 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= BLUES;
 	
+	EQUAL <= FALSE;
+	
 		
-	elsIF ( LT = "001") AND (DT = "011") then
+	elsIF ( LT = "001") AND (DT = "011") AND (CURLEVEL = "0000") then
 	
 	X6 <= WHITE;
 	X4 <= WHITE;
@@ -1758,9 +1795,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= BLUES;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "010") AND (DT = "011") then
+	elsIF ( LT = "010") AND (DT = "011") AND (CURLEVEL = "0000") then
 	
 	X5 <= WHITE;
 	X4 <= WHITE;
@@ -1781,9 +1820,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= BLUES;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "011") AND (DT = "011") then
+	elsIF ( LT = "011") AND (DT = "011") AND (CURLEVEL = "0000") then
 	
 	X4 <= WHITE;
 	X6 <= WHITE;
@@ -1800,17 +1841,19 @@ LeftMove : Process(lT, dT) BEGIN
 	X10 <= WHITE;
 	X11 <= WHITE;
 	
-	X12 <= BLUES;
+	X12 <= reds;
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= TRUE;
+
 	
 
-
-	ELSif ( LT = "000") AND (DT = "000") then
+	--r1	: STATE REDS
+	ELSif ( LT = "000") AND (DT = "000") AND (CURLEVEL = "0001") then
   
-	X3 <= REDS;
+	X3 <= BLACK;
 	X2 <= WHITE;
 	X1 <= WHITE;
 	X0 <= WHITE;
@@ -1830,12 +1873,13 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
-		
+	
+	EQUAL <= TRUE;	
 	
 	
 
 		
-	elsIF ( LT = "001") AND (DT = "000") then
+	elsIF ( LT = "001") AND (DT = "000") AND (CURLEVEL = "0001") then
 	
 	X2 <= REDS;
 	X3 <= REDS;
@@ -1857,9 +1901,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 	
-	elsIF ( LT = "010") AND (DT = "000") then
+	elsIF ( LT = "010") AND (DT = "000") AND (CURLEVEL = "0001") then
 	
 	X1 <= REDS;
 	X2 <= WHITE;
@@ -1881,9 +1927,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 	
-	elsIF ( LT = "011") AND (DT = "000") then
+	elsIF ( LT = "011") AND (DT = "000") AND (CURLEVEL = "0001") then
 	
 	X0 <= REDS;
 	X3 <= REDS;
@@ -1905,11 +1953,13 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 
 	
 --R2
 	
-	ELSif ( LT = "000") AND (DT = "001") then
+	ELSif ( LT = "000") AND (DT = "001") AND (CURLEVEL = "0001") then
   
 	X7 <= REDS;
 	X4 <= WHITE;
@@ -1931,8 +1981,10 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 		
-	elsIF ( LT = "001") AND (DT = "001") then
+	elsIF ( LT = "001") AND (DT = "001") AND (CURLEVEL = "0001") then
 	
 	X6 <= REDS;
 	X4 <= WHITE;
@@ -1953,9 +2005,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "010") AND (DT = "001") then
+	elsIF ( LT = "010") AND (DT = "001") AND (CURLEVEL = "0001") then
 	
 	X5 <= REDS;
 	X4 <= WHITE;
@@ -1972,13 +2026,15 @@ LeftMove : Process(lT, dT) BEGIN
 	X10 <= WHITE;
 	X11 <= WHITE;
 	
-	X12 <= REDS;
+	X12 <= WHITE;
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "011") AND (DT = "001") AND  then
+	elsIF ( LT = "011") AND (DT = "001") AND (CURLEVEL = "0001") then
 	
 	X4 <= REDS;
 	X6 <= WHITE;
@@ -2000,9 +2056,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 --R3
 	
-	ELSif ( LT = "000") AND (DT = "010")  then
+	ELSif ( LT = "000") AND (DT = "010") AND (CURLEVEL = "0001") then
 
 	X7 <= WHITE;
 	X4 <= WHITE;
@@ -2024,8 +2082,10 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 		
-	elsIF ( LT = "001") AND (DT = "010") AND  then
+	elsIF ( LT = "001") AND (DT = "010") AND (CURLEVEL = "0001") then
 	
 	X6 <= WHITE;
 	X4 <= WHITE;
@@ -2046,9 +2106,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "010") AND (DT = "010")  then
+	elsIF ( LT = "010") AND (DT = "010") AND (CURLEVEL = "0001") then
 	
 	X5 <= WHITE;
 	X4 <= WHITE;
@@ -2069,9 +2131,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "011") AND (DT = "010")  then
+	elsIF ( LT = "011") AND (DT = "010") AND (CURLEVEL = "0001") then
 	
 	X4 <= WHITE;
 	X6 <= WHITE;
@@ -2083,8 +2147,8 @@ LeftMove : Process(lT, dT) BEGIN
 	X1 <= WHITE;
 	X2 <= WHITE;
 	
-	X8 <= BLUES;
-	X9 <= REDS;
+	X8 <= REDS;
+	X9 <= WHITE;
 	X10 <= WHITE;
 	X11 <= WHITE;
 	
@@ -2093,9 +2157,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= WHITE;
 	
+	EQUAL <= FALSE;
+	
 --R4
 	
-	ELSif ( LT = "000") AND (DT = "011")  then
+	ELSif ( LT = "000") AND (DT = "011") AND (CURLEVEL = "0001") then
 
 	X7 <= WHITE;
 	X4 <= WHITE;
@@ -2117,8 +2183,10 @@ LeftMove : Process(lT, dT) BEGIN
 	X14 <= WHITE;
 	X15 <= REDS;
 	
+	EQUAL <= FALSE;
+	
 		
-	elsIF ( LT = "001") AND (DT = "011") then
+	elsIF ( LT = "001") AND (DT = "011") AND (CURLEVEL = "0001") then
 	
 	X6 <= WHITE;
 	X4 <= WHITE;
@@ -2139,9 +2207,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= REDS;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "010") AND (DT = "011")  then
+	elsIF ( LT = "010") AND (DT = "011") AND (CURLEVEL = "0001") then
 	
 	X5 <= WHITE;
 	X4 <= WHITE;
@@ -2162,9 +2232,11 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= REDS;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
-	elsIF ( LT = "011") AND (DT = "011") then
+	elsIF ( LT = "011") AND (DT = "011") AND (CURLEVEL = "0001") then
 	
 	X4 <= WHITE;
 	X6 <= WHITE;
@@ -2185,10 +2257,431 @@ LeftMove : Process(lT, dT) BEGIN
 	X13 <= WHITE;
 	X14 <= WHITE;
 	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
+	--r2	: STATE Black
+	ELSif ( LT = "000") AND (DT = "000") AND (CURLEVEL = "0010") then
+  
+	X3 <= BLACK;
+	X2 <= WHITE;
+	X1 <= WHITE;
+	X0 <= WHITE;
+	
+	X7 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X4 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
+		
+	elsIF ( LT = "001") AND (DT = "000") AND (CURLEVEL = "0010") then
+	
+	X2 <= BLACK;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X0 <= WHITE;
+	
+	X7 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X4 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+	elsIF ( LT = "010") AND (DT = "000") AND (CURLEVEL = "0010") then
+	
+	X1 <= BLACK;
+	X2 <= WHITE;
+	X3 <= WHITE;
+	X0 <= WHITE;
+	
+	X7 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X4 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+	elsIF ( LT = "011") AND (DT = "000") AND (CURLEVEL = "0010") then
+	
+	X0 <= BLACK;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X7 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X4 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+--R2
+	
+	ELSif ( LT = "000") AND (DT = "001") AND (CURLEVEL = "0010") then
+  
+	X7 <= BLACK;
+	X4 <= WHITE;
+	X5 <= WHITE;
+	X6 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+		
+	elsIF ( LT = "001") AND (DT = "001") AND (CURLEVEL = "0010") then
+	
+	X6 <= BLACK;
+	X4 <= WHITE;
+	X5 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+
+	EQUAL <= FALSE;
+	
+	elsIF ( LT = "010") AND (DT = "001") AND (CURLEVEL = "0010") then
+	
+	X5 <= BLACK;
+	X4 <= WHITE;
+	X6 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+
+	EQUAL <= FALSE;
+	
+	elsIF ( LT = "011") AND (DT = "001") AND (CURLEVEL = "0010") then
+	
+	X4 <= BLACK;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+--R3
+	
+	ELSif ( LT = "000") AND (DT = "010") AND (CURLEVEL = "0010") then
+
+	X7 <= WHITE;
+	X4 <= WHITE;
+	X5 <= WHITE;
+	X6 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= BLACK;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+		
+	elsIF ( LT = "001") AND (DT = "010") AND (CURLEVEL = "0010") then
+	
+	X6 <= WHITE;
+	X4 <= WHITE;
+	X5 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= BLACK;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
 
 	
+	elsIF ( LT = "010") AND (DT = "010") AND (CURLEVEL = "0010") then
+	
+	X5 <= WHITE;
+	X4 <= WHITE;
+	X6 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= GREENS;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= TRUE;
+	
+
+	
+	elsIF ( LT = "011") AND (DT = "010") AND (CURLEVEL = "0010") then
+	
+	X4 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= BLACK;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+	
+--R4
+	
+	ELSif ( LT = "000") AND (DT = "011") AND (CURLEVEL = "0010") then
+
+	X7 <= WHITE;
+	X4 <= WHITE;
+	X5 <= WHITE;
+	X6 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= BLACK;
+	
+	EQUAL <= FALSE;
+	
+		
+	elsIF ( LT = "001") AND (DT = "011") AND (CURLEVEL = "0010") then
+	
+	X6 <= WHITE;
+	X4 <= WHITE;
+	X5 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= WHITE;
+	X14 <= BLACK;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+
+	
+	elsIF ( LT = "010") AND (DT = "011") AND (CURLEVEL = "0010") then
+	
+	X5 <= WHITE;
+	X4 <= WHITE;
+	X6 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= WHITE;
+	X13 <= BLACK;
+	X14 <= WHITE;
+	X15 <= WHITE;
+
+	EQUAL <= FALSE;
+	
+	elsIF ( LT = "011") AND (DT = "011") AND (CURLEVEL = "0010") then
+	
+	X4 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X7 <= WHITE;
+	
+	X0 <= WHITE;
+	X3 <= WHITE;
+	X1 <= WHITE;
+	X2 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= BLACK;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= BLACK;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+	
+	EQUAL <= FALSE;
+
+	ELSE
+	
+	X3 <= BLUES;
+	X2 <= WHITE;
+	X1 <= WHITE;
+	X0 <= WHITE;
+	
+	X7 <= WHITE;
+	X6 <= WHITE;
+	X5 <= WHITE;
+	X4 <= WHITE;
+	
+	X8 <= WHITE;
+	X9 <= WHITE;
+	X10 <= WHITE;
+	X11 <= WHITE;
+	
+	X12 <= BLUES;
+	X13 <= WHITE;
+	X14 <= WHITE;
+	X15 <= WHITE;
+
+	EQUAL <= FALSE;
 
 	
 	end if;
